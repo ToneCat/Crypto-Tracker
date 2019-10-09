@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import MUIDataTable from "mui-datatables";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+class App extends Component {
+
+  // set the state (here we used states to ensure the API call was finished before rendering the table)
+  state = {
+    prices: []
+  }
+
+  pricesone = []; //setting array so we can fill it with JSON data from API Call
+ 
+ 
+  
+  componentDidMount() {
+    fetch('http://localhost:3001/prices') // fetches the data from the go server
+    .then(res => res.json())
+    .then((res) => {
+      for(var i in res) // converts JSON to array so it can be parsed and inserted with MUIDataTable
+    this.pricesone.push([i, res [i].USD])
+    this.setState({ prices: this.pricesone }) // sets current state to the array
+    
+      
+
+    })
+    .catch(console.log)
+  }
+
+  render(){
+  const columns = ["Currency", "Price"]; // sets columns
+
+  return(
+  <MUIDataTable 
+    title={"Cryptocurrency Prices"} 
+    data={this.state.prices} 
+    columns={columns}/>
+)
+}
+  
+ 
+  
+}
 export default App;
+render(<App />, document.getElementById('root'));
