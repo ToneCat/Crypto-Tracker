@@ -1,3 +1,6 @@
+
+
+
 .App {
   text-align: center;
 }
@@ -19,4 +22,26 @@
 
 .App-link {
   color: #09d3ac;
+}
+button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+ 
+
+}
+#chart{
+width:50%;
+height:50%;
+}
+#table{
+  max-width: 700px;
+  margin: 0 auto;
+
+}
+#header{
+  font-size: 100px;
 }
