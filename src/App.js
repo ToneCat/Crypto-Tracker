@@ -32,11 +32,25 @@ class App extends Component {
   render(){
   const columns = ["Currency", "Price"]; // sets columns
 
+  const options = {
+    print: false,
+    viewColumns : false,
+    download: false,
+    filter: false,
+    selectableRows: false
+  };
+
   return(
+ 
+
+
+
   <MUIDataTable 
     title={"Cryptocurrency Prices"} 
     data={this.state.prices} 
-    columns={columns}/>
+    columns={columns}
+    options={options}/>
+  
 )
 }
   
