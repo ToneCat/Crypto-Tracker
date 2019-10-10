@@ -75,14 +75,15 @@ class App extends Component {
     viewColumns : false,
     download: false,
     filter: false,
-    selectableRows: false
+    selectableRows: false,
+    rowsPerPage:7
   };
 
   
  
 
   return(
-<div id="header">Hello</div>,
+
     <div id="table">
   <MUIDataTable 
     title={"Cryptocurrency Prices"} 
